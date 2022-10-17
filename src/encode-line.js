@@ -10,9 +10,21 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For aabbbc should return 2a3bc
  *
  */
-function encodeLine(/* str */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+
+// Моё решение с (https://www.codewars.com/kata/run-length-encoding) Username: rsschool_5f44fbb09dc12692
+function encodeLine( str ) {
+  let res = ''
+  for(index = 0; index < str.length;){
+    let count = 1
+    for(i = index + 1; i <= str.length; i++){
+      if(str[index] === str[i]) { count++ } else {
+        res += (count === 1 ? '': count) + str[index]
+        index = i
+        break
+      }
+    }
+  }
+  return res;
 }
 
 module.exports = {
